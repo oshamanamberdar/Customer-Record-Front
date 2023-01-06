@@ -1,1 +1,254 @@
-<p>update-customer works!</p>
+<ul>
+  <h1 class="text-center text-white">Customer Form</h1>
+</ul>
+<br>
+<div class="container d-inline-flex">
+  <button class="btn-color-green btn" (click)="backToCustomerList()">Back To Customer List</button>
+</div>
+<form [formGroup]="customerForm">
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-md-6">
+        <input hidden id="id" class="form-control" formControlName="id">
+        <label>Name</label>
+        <input id="customerName" class="form-control mt-2" type="text" formControlName="customerName" >
+      </div>
+
+      <div class="col-md-6">
+        <label>Contact</label>
+        <input class="form-control mt-2" type="number" formControlName="contactNumber">
+      </div>
+
+
+      <div class="col-md-4 mt-2">
+        <label>Order Date</label>
+        <input type="date" class="form-control mt-2"  formControlName="orderDate">
+      </div>
+
+      <div class="col-md-4 mt-2">
+        <label>Trial Date</label>
+        <input type="date" class="form-control mt-2" formControlName="trialDate">
+      </div>
+
+      <div class="col-md-4 mt-2">
+        <label>Delivery Date</label>
+        <input type="date" class="form-control mt-2" formControlName="deliveryDate">
+      </div>
+
+      <div class="col-md-12 mt-2">
+        <label>Particular</label>
+        <input class="form-control mt-2" type="text" formControlName="particular">
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card" style="width: 40rem;">
+          <div class="card-body">
+            <h5 class="card-title text-primary ">Coat Measurement</h5>
+            <hr>
+            <div class="row">
+              <div class="col-md-3">
+                <label>Length</label>
+                <input (input)="getValue()" class="form-control" type="number" formControlName="coatLength">
+              </div>
+
+              <div class="col-md-3">
+                <label>Chest</label>
+                <input (input)="getValue()" class="form-control" type="number" formControlName="coatChest">
+              </div>
+
+              <div class="col-md-3">
+                <label>Waist</label>
+                <input (input)="getValue()" class="form-control" type="number" formControlName="coatWaist">
+              </div>
+
+              <div class="col-md-3">
+                <label>Hip</label>
+                <input (input)="getValue()" class="form-control" type="number" formControlName="coatHip">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3">
+                <label>Shoulder</label>
+                <input (input)="getValue()" class="form-control" type="number" formControlName="coatShoulder">
+              </div>
+
+
+              <div class="col-md-3">
+                <label>Sleeve Length</label>
+                <input (input)="getValue()" class="form-control" type="number" formControlName="coatSleeveLength">
+              </div>
+
+              <div class="col-md-3">
+                <label>Half Back</label>
+                <input  class="form-control" type="number" formControlName="coatHalfBack">
+              </div>
+
+              <div class="col-md-3">
+                <label>Neck</label>
+                <input (input)="getValue()" class="form-control" type="number" formControlName="coatNeck">
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card" style="width: 40rem;">
+          <div class="card-body">
+            <h5 class="card-title text-primary ">Pant Measurement</h5>
+            <hr>
+            <div class="row">
+              <div class="col-md-3">
+                <label>Length</label>
+                <input class="form-control" type="number" formControlName="pantLength">
+              </div>
+
+              <div class="col-md-3">
+                <label>Waist</label>
+                <input class="form-control" type="number" formControlName="pantWaist">
+              </div>
+
+              <div class="col-md-3">
+                <label>Hip</label>
+                <input class="form-control" type="number" formControlName="pantHip">
+              </div>
+
+              <div class="col-md-3">
+                <label>Thigh</label>
+                <input class="form-control" type="number" formControlName="pantThigh">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3">
+                <label>Knee</label>
+                <input class="form-control" type="number" formControlName="pantKnee">
+              </div>
+
+
+              <div class="col-md-3">
+                <label>Bottom</label>
+                <input class="form-control" type="number" formControlName="pantBottom">
+              </div>
+
+              <div class="col-md-3">
+                <label>Crouch</label>
+                <input class="form-control" type="number" formControlName="pantCrouch">
+              </div>
+
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 mt-2">
+        <div class="card" style="width: 40rem;">
+          <div class="card-body">
+            <h5 class="card-title text-primary ">Shirt Measurement</h5>
+            <hr>
+            <div class="row">
+              <div class="col-md-3">
+                <label>Length</label>
+                <input [ngModel]="sLength" class="form-control" type="number" formControlName="shirtLength">
+              </div>
+
+              <div class="col-md-3">
+                <label>Chest</label>
+                <input [ngModel]="sChest" class="form-control" type="number" formControlName="shirtChest">
+              </div>
+
+              <div class="col-md-3">
+                <label>Waist</label>
+                <input [ngModel]="sWaist" class="form-control" type="number" formControlName="shirtWaist">
+              </div>
+
+              <div class="col-md-3">
+                <label>Hip</label>
+                <input [ngModel]="sHip" class="form-control" type="number" formControlName="shirtHip">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3">
+                <label>Shoulder</label>
+                <input [ngModel]="sShoulder" class="form-control" type="number" formControlName="shirtShoulder">
+              </div>
+
+
+              <div class="col-md-3">
+                <label>Sleeve Length</label>
+                <input [ngModel]="sSleeveLength" class="form-control" type="number" formControlName="shirtSleeveLength">
+              </div>
+
+
+              <div class="col-md-3">
+                <label>Neck</label>
+                <input [ngModel]="sNeck" class="form-control" type="number" formControlName="shirtNeck">
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 mt-2">
+        <label>Note</label>
+        <textarea class="form-control  mt-3" rows="6"  formControlName="note">
+        </textarea>
+      </div>
+
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-4">
+        <label>Total Amount</label>
+        <input  (input)="calculate()" class="form-control mt-2" type="number" formControlName="totalAmount">
+      </div>
+
+      <div class="col-md-4">
+        <label>Advance Amount</label>
+        <input (input)="calculate()" class="form-control mt-2" type="number" formControlName="advanceAmount">
+      </div>
+
+      <div class="col-md-4">
+        <label>Balance Amount</label>
+        <input [ngModel]="balanceAmount" class="form-control mt-2" type="number"  readonly formControlName="balanceAmount">
+      </div>
+
+      <div class="col-md-4 mt-2">
+        <label>Status of Product</label>
+        <select class="form-control" formControlName="statusOfProduct">
+          <option value="null">Please Select</option>
+          <option value="For Trial">For Trial</option>
+          <option value="For Alteration">For Alteration</option>
+          <option value="For Delivery">For Delivery</option>
+          <option value="Delivered">Delivered</option>
+          <option value="Cancelled">Cancelled</option>
+        </select>
+      </div>
+
+      <div class="col-md-4 mt-2">
+        <label>Status of Balance Amount</label>
+        <select class="form-control" formControlName="statusOfBalance">
+          <option value="null">Please Select</option>
+          <option value="Pending">Pending</option>
+          <option value="Paid">Paid</option>
+        </select>
+      </div>
+    </div>
+
+    <br>
+    <div class="d-flex flex-row-reverse">
+      <button class="btn btn-success  m-2" (click)="update()">Save</button>
+      <button class="btn btn-danger  m-2" (click)="clearForm()">Clear</button>
+      <button class="btn btn-warning  m-2" (click)="clearForm()">Cancel</button>
+    </div>
+    <br>
+    <hr>
+  </div>
+
+
+</form>

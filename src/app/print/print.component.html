@@ -1,11 +1,155 @@
+
+
+<div class="container margin-body">
+
+
 <div  id="print-section">
-  <img src="">
-<h1 class="text-center">ITILEO</h1>
-<h6 class="text-center">World Class Fabric</h6>
+  <header class="margin-left-1">
+    <h1>Invoice</h1>
+    <img src="assets/logo.jpeg" alt="logo" width="100" height="100">
+    <address>
+      <p class="text-black">ITLEO</p>
+      <p>MGF Megacity Mall, Ground floor Shop number 29</p>
+      <p>(+91) 7986668039 | +91124-4470204</p>
+      <p>GSTIN.06AFTPO6268G1ZU</p>
+    </address>
+  </header>
+  <article>
+    <h1>Recipient</h1>
+    <address>
+      <p>Mr/Ms {{customer.customerName}}<br></p>
+    </address>
+    <table class="meta">
+      <tr>
+        <th><span>Invoice</span></th>
+        <td><span>{{customer.id}}</span></td>
+      </tr>
+      <tr>
+        <th><span>Order Date</span></th>
+        <td><span>{{customer.orderDate | date}}</span></td>
+      </tr>
+      <tr>
+        <th><span>Trial Date</span></th>
+        <td><span>{{customer.trialDate | date}}</span></td>
+      </tr>
+    </table>
+    <table class="inventory">
+      <thead>
+      <tr>
+        <th><span >Item</span></th>
+        <th><span >Fabric Shade Number</span></th>
+      </tr>
+
+      </thead>
+      <tbody>
+      <tr>
+        <td><a class="cut">-</a><span >{{customer.particular}}</span></td>
+        <td><a class="cut">-</a><span ></span></td>
+      </tr>
+      </tbody>
+    </table>
+    <table class="balance">
+      <tr>
+        <th><span >Total</span></th>
+        <td><span data-prefix>₹</span><span>{{customer.totalAmount}}</span></td>
+      </tr>
+      <tr>
+        <th><span >Amount Paid</span></th>
+        <td><span data-prefix>₹</span><span >{{customer.advanceAmount}}</span></td>
+      </tr>
+      <tr>
+        <th><span >Balance Due</span></th>
+        <td><span data-prefix>₹</span><span>{{customer.balanceAmount}}</span></td>
+      </tr>
+    </table>
+  </article>
+
 
 </div>
+  <button class="btn btn-success text-white"
+          [useExistingCss]="true"
+          printSectionId="print-section"
+          ngxPrint> <i class="bi bi-printer"></i>Print Invoice</button>
 
-<button
-  [useExistingCss]="true"
-  printSectionId="print-section"
-  ngxPrint>print</button>
+<div id="print-section-2">
+  <br>
+  <h1 class="text-center">Measurement Sheet</h1>
+  <h5>Coat Measurement</h5>
+  <h6>Bill Number: {{customer.id}}</h6>
+  <table class="table table-bordered table-striped">
+    <tr class="text-sm-center bg-info">
+      <th>Length</th>
+      <th>Chest</th>
+      <th>Waist</th>
+      <th>Hip</th>
+      <th>Shoulder</th>
+      <th>Sleeve Length</th>
+      <th>Half Back</th>
+      <th>Neck</th>
+    </tr>
+    <tr class="text-sm-center">
+      <td>{{customer.coatLength}}</td>
+      <td>{{customer.coatChest}}</td>
+      <td>{{customer.coatWaist}}</td>
+      <td>{{customer.coatHip}}</td>
+      <td>{{customer.coatShoulder}}</td>
+      <td>{{customer.coatSleeveLength}}</td>
+      <td>{{customer.coatHalfBack}}</td>
+      <td>{{customer.coatNeck}}</td>
+    </tr>
+  </table>
+
+  <h5 class="margin-top-measurement-2">Pant Measurement</h5>
+  <h6>Bill Number: {{customer.id}}</h6>
+  <table class="table table-bordered table-striped">
+    <tr class="text-sm-center bg-info">
+      <th>Length</th>
+      <th>Waist</th>
+      <th>Hip</th>
+      <th>Thigh</th>
+      <th>Knee</th>
+      <th>Bottom</th>
+      <th>Fly</th>
+    </tr>
+    <tr class="text-sm-center">
+      <td>{{customer.pantLength}}</td>
+      <td>{{customer.pantWaist}}</td>
+      <td>{{customer.pantHip}}</td>
+      <td>{{customer.pantThigh}}</td>
+      <td>{{customer.pantKnee}}</td>
+      <td>{{customer.pantBottom}}</td>
+      <td>{{customer.pantCrouch}}</td>
+    </tr>
+  </table>
+
+  <h5 class="margin-top-measurement-2">Shirt Measurement</h5>
+  <h6>Bill Number: {{customer.id}}</h6>
+  <table class="table table-bordered table-striped">
+    <tr class="text-sm-center bg-info">
+      <th>Length</th>
+      <th>Chest</th>
+      <th>Waist</th>
+      <th>Hip</th>
+      <th>Shoulder</th>
+      <th>Sleeve Length</th>
+      <th>Neck</th>
+    </tr>
+    <tr class="text-sm-center">
+      <td>{{customer.shirtLength}}</td>
+      <td>{{customer.shirtChest}}</td>
+      <td>{{customer.shirtWaist}}</td>
+      <td>{{customer.shirtHip}}</td>
+      <td>{{customer.shirtShoulder}}</td>
+      <td>{{customer.shirtSleeveLength}}</td>
+      <td>{{customer.shirtNeck}}</td>
+    </tr>
+  </table>
+</div>
+  <hr>
+  <button class="btn btn-success text-white"
+          [useExistingCss]="true"
+          printSectionId="print-section-2"
+          ngxPrint> <i class="bi bi-printer"></i>Print Measurement</button>
+
+
+</div>

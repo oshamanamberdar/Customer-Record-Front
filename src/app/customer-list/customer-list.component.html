@@ -1,27 +1,92 @@
+<ul>
+  <h1 class="text-center text-white">Customer Record</h1>
+</ul>
+<br>
 
-  <h1 class="bg-warning text-center">Customer Record</h1>
-  <div class="container d-inline-flex">
-    <button class=" btn btn-primary" (click)="addCustomer()">Add Customer</button>
-  </div>
 
-  <table class="table text-center">
-    <thead class="thead-dark ">
-    <tr>
-      <th scope="col">S.No</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+<div class="d-flex">
+  <div class="mr-auto p-2"><button class=" btn btn-color-green text-white" (click)="addCustomer()">Add Customer</button></div>
+  <div class="p-2"> <input type="text" name="search" [(ngModel)]="term" placeholder="Search.."></div>
+</div>
+<hr>
+
+  <table class="table text-center text-sm-center table-hover">
+    <thead class="bg-color-peach text-center text-white">
+    <tr style="font-size: 14px">
+      <th  scope="col">S.No</th>
+      <th style="width: 10%" scope="col">Customer Name</th>
+      <th style="width: 10%" scope="col">Contact</th>
+      <th style="width: 10%" scope="col">Order Date</th>
+      <th style="width: 10%" scope="col">Trial Date</th>
+      <th style="width: 10%" scope="col">Delivery Date</th>
+      <th style="width: 10%" scope="col">Total Amount</th>
+      <th style="width: 10%" scope="col">Advance Amount</th>
+      <th style="width: 10%" scope="col">Balance Amount</th>
+      <th style="width: 10%" scope="col">Product Status</th>
+      <th style="width: 15%" scope="col">Balance Status</th>
+      <th  scope="col">Update</th>
+      <th scope="col">Delete</th>
+      <th scope="col">Print</th>
     </tr>
     </thead>
     <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+    <tr style="font-size: 13px" *ngFor="let customer of customerList |filter:term | paginate: { itemsPerPage: 15, currentPage: p }">
+      <td>{{customer.id}}</td>
+      <td>{{customer.customerName}}</td>
+      <td>{{customer.contactNumber}}</td>
+      <td>{{customer.orderDate | date}}</td>
+      <td>{{customer.trialDate | date}}</td>
+      <td>{{customer.deliveryDate | date}}</td>
+      <td>{{customer.totalAmount}}</td>
+      <td>{{customer.advanceAmount}}</td>
+      <td>{{customer.balanceAmount}}</td>
+      <td>{{customer.statusOfProduct}}</td>
+      <td>{{customer.statusOfBalance}}</td>
+      <td>
+        <button (click)="routeToUpdateCustomer(customer.id)" class="btn-success btn">
+              <i class="bi bi-arrow-bar-up"></i>
+        </button>
+      </td>
+      <td>
+        <button class="btn btn-danger" (click)="openPopup()">
+          <i class="bi bi-trash-fill"></i>
+        </button>
+        <div
+          class="modal"
+          tabindex="-1"
+          role="dialog"
+          [ngStyle]="{'display':displayStyle}">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header bg-dark text-white">
+                <h4 class="modal-title">Delete</h4>
+              </div>
+              <div class="modal-body">
+                <p>Are you Sure wanted to Delete?</p>
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-warning"
+                        (click)="closePopup()">
+                  Close
+                </button>
+                <button class="btn btn-danger" (click)="deleteCustomerById(customer.id)">
+                  Delete
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </td>
+      <td>
+        <button (click)="routeToPrint(customer.id)" class="btn-info btn">
+          <i class="bi bi-printer"></i>
+        </button>
+      </td>
     </tr>
     </tbody>
   </table>
 
 
 
+<pagination-controls (pageChange)="p = $event"></pagination-controls>

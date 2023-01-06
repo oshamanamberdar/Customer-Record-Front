@@ -10,6 +10,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class PrintComponent {
   customerId: any
+  customer:any
 
   constructor(private customerService: CustomerService,
               private route: ActivatedRoute,
@@ -25,6 +26,7 @@ export class PrintComponent {
   getCustomerData() {
     this.customerId = this.route.snapshot.paramMap.get('id');
     this.customerService.getCustomerById(this.customerId).subscribe(response => {
+      this.customer = response;
       console.log(response, 'customer print')
     })
   }
