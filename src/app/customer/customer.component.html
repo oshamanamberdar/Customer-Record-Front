@@ -1,0 +1,43 @@
+<h1 class="text-center">Customer Form</h1>
+
+<form [formGroup]="customerForm">
+
+
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-6">
+      <label>Name</label>
+      <input  class="form-control mt-2" formControlName="customerName">
+    </div>
+
+    <div class="col-md-6">
+      <label>Contact</label>
+      <input class="form-control mt-2"  formControlName="contactNumber">
+    </div>
+
+
+
+    <div class="col-md-4 mt-2">
+      <label>Order Date</label>
+      <input class="form-control mt-2" formControlName="orderDate" >
+    </div>
+
+    <div class="col-md-4 mt-2">
+      <label>Trial Date</label>
+      <input class="form-control mt-2" formControlName="trialDate">
+    </div>
+
+    <div class="col-md-4 mt-2">
+      <label>Delivery Date</label>
+      <input class="form-control mt-2" formControlName="deliveryDate" >
+    </div>
+  </div>
+
+
+  <button  class="btn btn-outline-primary  m-2" (click)="onSubmit()"> Submit</button>
+  <button  class="btn btn-outline-danger  m-2" (click)="onSubmit()"> Clear</button>
+</div>
+
+
+
+</form>
